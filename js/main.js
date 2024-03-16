@@ -27,11 +27,44 @@ let nota=0;
         }while(x==0)
         return leg;
      }
- 
- alert("Bienvenido al Sistema de Carga de Notas\n Siga los Pasos a Continuacion.");
-
- let legajo, nota1, nota2, nota3, notafinal, acumAprueba=0, acumDesaprueba=0, acumCursa=0, acumAlumnos= 0;
-
+function validarNombre() {
+    let nom, x=0;
+    do{
+        nom = prompt("Porfavor ingrese su Nombre y Apellido")
+        if (isNaN(nom)) {
+       x=1;
+      }
+  else{
+   alert("Ingrese un texto valido")
+  }
+   }while(x==0)
+   return nom;
+}
+function elegirMateria(){
+    let x=0, a;
+    do{
+        a = prompt("Porfavor Elija que notas desea cargar al sismeta.\nSeleccione:\n 1. Analisis Matematico\n 2. Calculo Numerico\n 3. Algebra Analitica")
+        if (a==1 || a==2 || a==3) {
+            x=1;
+      }
+  else{
+   alert("Ingrese una opcion Valida")
+  }
+   }while(x==0)
+   if (a==1) {
+    a = "Analisis Matematico";
+   } else if(a==2){
+    a =  "Calculo Numerico";
+   }else
+    a = "Algebra Analitica";
+   return a;
+}
+let materia, nombre, legajo, nota1, nota2, nota3, notafinal, acumAprueba=0, acumDesaprueba=0, acumCursa=0, acumAlumnos= 0;
+console.log("Bienvenido al Sistema de Carga de Notas\n Siga los Pasos a Continuacion.");
+nombre = validarNombre();
+// alert("Bienvenido al Sistema de Carga",nombre);
+console.log("Bienvenido al Sistema de Carga",nombre);
+materia = elegirMateria();
 legajo = validarLeg();
 while(legajo!=0){
     nota1 = validarNota();
@@ -51,4 +84,4 @@ while(legajo!=0){
     legajo = validarLeg();
     acumAlumnos++;
 }
-console.log("El Numero de Estudientes Ingresados Fue: ",acumAlumnos,"\nEl Total de aprobados fue de:",acumAprueba,"Representa un",(acumAprueba*100)/acumAlumnos,"% del Total ingresado","\nEl Total de Cursados fue de: ",acumCursa, "Representa un", (acumCursa*100)/acumAlumnos,"% del Total ingresado" , "\nEl Total de Desaprobados fue de: ",acumDesaprueba,"Representa un", (acumDesaprueba*100)/acumAlumnos, "% del Total ingresado");
+console.log("El Numero de Estudientes inscriptos a:",materia, "Fue de:",acumAlumnos,"\nEl Total de aprobados fue de:",acumAprueba,"Representa un",(acumAprueba*100)/acumAlumnos,"% del Total ingresado","\nEl Total de Cursados fue de: ",acumCursa, "Representa un", (acumCursa*100)/acumAlumnos,"% del Total ingresado" , "\nEl Total de Desaprobados fue de: ",acumDesaprueba,"Representa un", (acumDesaprueba*100)/acumAlumnos, "% del Total ingresado");
